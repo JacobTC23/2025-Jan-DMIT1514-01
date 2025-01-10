@@ -43,6 +43,7 @@ public class MyFirstGame : Game
         GraphicsDevice.Clear(Color.DarkKhaki);
         
         _spriteBatch.Begin();
+        
         _spriteBatch.DrawString(_arialFont, _message, Vector2.Zero, Color.White);
         _spriteBatch.End();
         base.Draw(gameTime);
