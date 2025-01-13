@@ -54,7 +54,6 @@ public class DisplaySprite : Game
 
         _spriteBatch.Begin();
         _spriteBatch.Draw(_backgroundImage, Vector2.Zero, Color.White);
-
         _spriteBatch.Draw(_beetleImage, new Vector2(_x, _y), Color.White);
         
         _spriteBatch.End();
