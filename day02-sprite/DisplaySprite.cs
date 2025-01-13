@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Security.Cryptography.X509Certificates;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -6,10 +7,15 @@ namespace day02_sprite;
 
 public class DisplaySprite : Game
 {
+    private const int _WindowWidth = 640;
+    private const int _WindowHeight = 320;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Texture2D _backgroundImage;
     private Texture2D _beetleImage;
+
+    private float _x = 0;
+    private float _y = 0;
 
     public DisplaySprite()
     {
@@ -20,7 +26,9 @@ public class DisplaySprite : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        _graphics.PreferredBackBufferWidth = _WindowWidth;
+        _graphics.PreferredBackBufferHeight = _WindowHeight;
+        _graphics.ApplyChanges();
 
         base.Initialize();
     }
@@ -34,10 +42,8 @@ public class DisplaySprite : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        // TODO: Add your update logic here
+        _x = _x + 1; //or _x++ or _x += 1
+        _y = _y + 1;
 
         base.Update(gameTime);
     }
@@ -48,7 +54,9 @@ public class DisplaySprite : Game
 
         _spriteBatch.Begin();
         _spriteBatch.Draw(_backgroundImage, Vector2.Zero, Color.White);
-        _spriteBatch.Draw(_beetleImage, Vector2.Zero, Color.White);
+
+        _spriteBatch.Draw(_beetleImage, new Vector2(_x, _y), Color.White);
+        
         _spriteBatch.End();
 
         base.Draw(gameTime);
