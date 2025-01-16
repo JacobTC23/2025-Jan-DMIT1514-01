@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -13,8 +14,9 @@ public class BouncingSprite : Game
     private Texture2D _backgroundImage;
     private Texture2D _beetleImage;
 
-    private float _x = 0;
-    private float _y = 0;
+    private float _x = 0, _velocityShipX = 5;
+    private float _y = 0, _velocityShipY = 5;
+    private float _shipRotation;
 
     public BouncingSprite()
     {
@@ -42,9 +44,19 @@ public class BouncingSprite : Game
 
     protected override void Update(GameTime gameTime)
     {
-        _x++;
-        _y++;
+        
+        _x += _velocityShipX;
+        if(_x <= 0 || _x + _beetleImage.Width >= _WindowWidth)
+        {
+            _velocityShipX *= -1;
+        }
 
+        _y += _velocityShipY;
+        if(_y <= 0 || _y + _beetleImage.Height >= _WindowHeight)
+        {
+            _velocityShipY *= -1;
+        }
+        _shipRotation += 0.1f;
         base.Update(gameTime);
     }
 
@@ -52,7 +64,23 @@ public class BouncingSprite : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+        //Watch out! Order matters! More recenty draw calls draw over older ones.
+        _spriteBatch.Draw(_backgroundImage, Vector2.Zero, Color.White);
+        //_spriteBatch.Draw(_beetleImage, new Vector2(_x, _y), Color.White);
+        _spriteBatch.Draw(
+            _beetleImage,
+            new Vector2(_x, _y),
+            null,                  // Source rectangle (null for full texture)
+            Color.White,           // Tint color
+            _shipRotation,        // Rotation angle in radians
+            new Vector2(_beetleImage.Width / 2, _beetleImage.Height / 2),               // Origin point
+            1.0f,                  // Scale
+            SpriteEffects.None,    // No sprite effects
+            0f                     // Layer depth
+        );
+        
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }

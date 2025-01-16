@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("day02-zz-exercise-solution")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3536ca170f13011db8c53f07ed9c0c2512237a51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef905d11dbc368220401e768550c5fdc84222b4c")]
 [assembly: System.Reflection.AssemblyProductAttribute("day02-zz-exercise-solution")]
 [assembly: System.Reflection.AssemblyTitleAttribute("day02-zz-exercise-solution")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
