@@ -68,18 +68,20 @@ public class BouncingSprite : Game
         //Watch out! Order matters! More recenty draw calls draw over older ones.
         _spriteBatch.Draw(_backgroundImage, Vector2.Zero, Color.White);
         //_spriteBatch.Draw(_beetleImage, new Vector2(_x, _y), Color.White);
-        _spriteBatch.Draw(
-            _beetleImage,
-            new Vector2(_x, _y),
-            null,                  // Source rectangle (null for full texture)
-            Color.White,           // Tint color
-            _shipRotation,        // Rotation angle in radians
-            new Vector2(_beetleImage.Width / 2, _beetleImage.Height / 2),               // Origin point
-            1.0f,                  // Scale
-            SpriteEffects.None,    // No sprite effects
-            0f                     // Layer depth
-        );
-        
+        // _spriteBatch.Draw(
+        //     _beetleImage,
+        //     new Vector2(_x, _y),
+        //     null,                  // Source rectangle (null for full texture)
+        //     Color.White,           // Tint color
+        //     _shipRotation,        // Rotation angle in radians
+        //     new Vector2(_beetleImage.Width / 2, _beetleImage.Height / 2),               // Origin point
+        //     1.0f,                  // Scale
+        //     SpriteEffects.None,    // No sprite effects
+        //     0f                     // Layer depth
+        // );
+        _spriteBatch.Draw(_beetleImage, new Vector2(_x + (_beetleImage.Bounds.Width / 2), 
+                _y + (_beetleImage.Bounds.Height / 2)), null, Color.White, _shipRotation, 
+                new Vector2(_beetleImage.Bounds.Width / 2, _beetleImage.Bounds.Height / 2), 1, SpriteEffects.None, 0);
         _spriteBatch.End();
 
         base.Draw(gameTime);
