@@ -32,7 +32,7 @@ public class AnimationGame : Game
         Texture2D spriteSheet = Content.Load<Texture2D>("Walking");
         //pass the constructor the spritesheet, the width of each cel, 
         //and the amount of time to display each cell
-        _personWalking = new CelAnimationSequence(spriteSheet, 81, 1 / 8f);
+        _personWalking = new CelAnimationSequence(spriteSheet, 60, 1 / 8f);
         
         _animationPlayer = new CelAnimationPlayer();
         //start animating!
